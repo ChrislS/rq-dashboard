@@ -6,8 +6,9 @@ import times
 from flask import Blueprint
 from flask import current_app, url_for, abort
 from flask import render_template
-from rq import Queue, Worker
-from rq import cancel_job, requeue_job
+from rq import Worker #, Queue
+from queue import Queue, requeue_job
+from rq import cancel_job #, requeue_job
 from rq import get_failed_queue
 from math import ceil
 
@@ -82,8 +83,9 @@ def serialize_job(job):
         created_at=serialize_date(job.created_at),
         enqueued_at=serialize_date(job.enqueued_at),
         ended_at=serialize_date(job.ended_at),
+        status=job.status,
         origin=job.origin,
-        result=job._result,
+        result=job.result and str(job.result),
         exc_info=job.exc_info,
         description=job.description)
 
