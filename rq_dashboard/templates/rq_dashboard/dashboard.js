@@ -202,7 +202,8 @@ var api = {
         if (jobs.length > 0) {
             $.each(jobs, function(i, job) {
                 job.created_at = toRelative(Date.create(job.created_at));
-                if (job.ended_at !== undefined) {
+                job.enqueued_at = toRelative(Date.create(job.enqueued_at));
+                if (job.ended_at) {
                     job.ended_at = toRelative(Date.create(job.ended_at));
                 }
                 html += template({d: job}, {variable: 'd'});
