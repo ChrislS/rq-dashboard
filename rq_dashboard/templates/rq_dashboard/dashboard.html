@@ -95,6 +95,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Age</th>
+                    <th>Progress</th>
                     <th class="narrow">Actions</th>
                 </tr>
             </thead>
@@ -125,6 +126,7 @@
                     <% } %>
                 </td>
                 <td><span class="creation_date"><%= d.created_at %></span></td>
+                <td><span class="creation_date"><%= d.progress_state %> / <%= d.progress_max %></span></td>
                 <td class="actions narrow">
                     <% if (d.exc_info || d.status === "started") { %>
                         <a href="#" data-role="requeue-job-btn" class="btn btn-small"><i class="icon-retweet"></i> Requeue</a>

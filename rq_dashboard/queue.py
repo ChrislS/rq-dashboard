@@ -1,5 +1,5 @@
 from rq import Queue as BaseQueue
-from rq.job import Job, Status, requeue_job as base_requeue_job
+from rq.job import Job, JobStatus as Status, requeue_job as base_requeue_job
 from rq.compat import as_text, decode_redis_hash
 
 
