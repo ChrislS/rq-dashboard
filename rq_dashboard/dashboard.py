@@ -80,6 +80,7 @@ def serialize_date(dt):
 def serialize_job(job):
     progress_steps = job.meta['progress_steps'] if job.meta.has_key('progress_steps') else 'na'
     progress_max = job.meta['progress_max'] if job.meta.has_key('progress_max') else 'na'
+    progress_status = job.meta['progress_status'] if job.meta.has_key('progress_status') else 'na'
     return dict(
         id=job.id,
         created_at=serialize_date(job.created_at),
@@ -91,7 +92,8 @@ def serialize_job(job):
         exc_info=job.exc_info,
         description=job.description,
         progress_state=progress_steps,
-        progress_max=progress_max)
+        progress_max=progress_max,
+        progress_status=progress_status)
 
 
 def remove_none_values(input_dict):
